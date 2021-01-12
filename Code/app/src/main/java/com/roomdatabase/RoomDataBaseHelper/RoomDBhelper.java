@@ -6,6 +6,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomOpenHelper;
 
+import com.roomdatabase.RoomDataBaseDAO.EmployeeDAO;
+
 public abstract class RoomDBhelper extends RoomDatabase {
     private static final String  TAG=RoomDBhelper.class.getName();
     private static final String DB_NAME="RoomExample.db";
@@ -20,4 +22,8 @@ public abstract class RoomDBhelper extends RoomDatabase {
     private static RoomDBhelper buildDataBaseInstance(Context context){
         return Room.databaseBuilder(context, RoomDBhelper.class,DB_NAME).build();
     }
+    /**
+     * interface DAO
+     */
+    public abstract EmployeeDAO getEmployeeDAO();
 }
