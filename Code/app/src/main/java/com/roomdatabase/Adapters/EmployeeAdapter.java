@@ -14,7 +14,7 @@ import com.roomdatabase.RoomDataBaseEntities.Employee;
 
 import java.util.ArrayList;
 
-public class EmployeeAdapter extends RecyclerView.Adapter {
+public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmpItemViewHolder> {
     private Context context;
     private ArrayList<EmployeeDetails> employeeDetailsArrayList;
     public EmployeeAdapter(ArrayList<EmployeeDetails> loc_employeeDetailsArrayList) {
@@ -23,7 +23,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EmpItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context=parent.getContext();
         View itemView = LayoutInflater.from(context).inflate(R.layout.emp_holder_item, parent, false);
         return new EmployeeAdapter.EmpItemViewHolder(itemView) ;
@@ -31,13 +31,14 @@ public class EmployeeAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull EmpItemViewHolder empItemViewHolder, int position) {
-        empItemViewHolder.bindEmployeeDetails(empItemViewHolder,position);
+        empItemViewHolder.bindEmployeeDetails(employeeDetailsArrayList.get(position),empItemViewHolder);
     }
 
     @Override
     public int getItemCount() {
-        return employeeDetailsArrayList.size();
+        return 0;
     }
+
 
     public class EmpItemViewHolder extends RecyclerView.ViewHolder{
 
@@ -45,8 +46,10 @@ public class EmployeeAdapter extends RecyclerView.Adapter {
             super(itemView);
         }
 
-      void   bindEmployeeDetails(Employee employee,int postion){
+      void   bindEmployeeDetails(EmployeeDetails employee,EmpItemViewHolder empItemViewHolder){
 
         }
     }
 }
+
+
